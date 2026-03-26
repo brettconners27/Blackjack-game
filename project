@@ -1,7 +1,0 @@
-cd /Users/brettconners/Desktop/CODEX
-git init
-git add .
-git commit -m "Initial blackjack site"
-git branch -M main
-git remote add origin https://github.com/brettconners27/Blackjack-game.git
-git push -u origin main
