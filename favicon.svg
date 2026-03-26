@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Blackjack icon">
+  <rect width="128" height="128" rx="28" fill="#0b5d3b"/>
+  <rect x="24" y="20" width="52" height="74" rx="8" fill="#fffdf7"/>
+  <rect x="52" y="34" width="52" height="74" rx="8" fill="#fffdf7" transform="rotate(10 78 71)"/>
+  <text x="36" y="48" font-size="20" font-family="Georgia, serif" font-weight="700" fill="#af1f1f">A</text>
+  <text x="70" y="70" font-size="20" font-family="Georgia, serif" font-weight="700" fill="#1d1d1d">10</text>
+  <text x="34" y="76" font-size="22" fill="#af1f1f">♥</text>
+  <text x="70" y="96" font-size="22" fill="#1d1d1d">♠</text>
+</svg>

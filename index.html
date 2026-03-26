@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blackjack</title>
+    <meta name="description" content="A single-player blackjack table with betting, splits, doubles, and dealer soft-17 rules." />
+    <meta name="theme-color" content="#0b5d3b" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Blackjack" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="table">
+      <section class="header">
+        <p class="eyebrow">Dealer hits on soft 17</p>
+        <h1>Blackjack</h1>
+        <p class="status" id="status">Place chips, then press Deal to start a new hand.</p>
+      </section>
+
+      <section class="hud">
+        <article class="panel">
+          <h2>Table</h2>
+          <div class="stats">
+            <p>Bankroll <strong id="bankroll">$500</strong></p>
+            <p>Current Bet <strong id="current-bet">$0</strong></p>
+            <p>Shoe <strong id="shoe-count">4</strong></p>
+            <p>ATM Debt <strong id="atm-debt">$0</strong></p>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2>Running Score</h2>
+          <div class="stats">
+            <p>Wins <strong id="wins">0</strong></p>
+            <p>Losses <strong id="losses">0</strong></p>
+            <p>Pushes <strong id="pushes">0</strong></p>
+            <p>Win % <strong id="win-rate">0%</strong></p>
+          </div>
+        </article>
+
+        <article class="panel trainer-panel">
+          <div class="trainer-header">
+            <h2>Trainer</h2>
+            <span class="mode-pill" id="strategy-mode-label">Basic</span>
+          </div>
+          <div class="trainer-toggles">
+            <label class="toggle">
+              <input id="show-count-toggle" type="checkbox" />
+              <span>Show Count</span>
+            </label>
+            <label class="toggle">
+              <input id="use-count-strategy-toggle" type="checkbox" />
+              <span>Use Count Strategy</span>
+            </label>
+          </div>
+          <div class="count-values hidden" id="count-panel">
+            <p>Running <strong id="running-count">0</strong></p>
+            <p>True <strong id="true-count">0</strong></p>
+          </div>
+          <div class="trainer-stats">
+            <p>Correct <strong id="decision-score">0 / 0</strong></p>
+            <p>Decision % <strong id="decision-accuracy">0%</strong></p>
+            <p>Perfect Hands <strong id="perfect-hands">0 / 0</strong></p>
+          </div>
+        </article>
+      </section>
+
+      <section class="board">
+        <article class="seat">
+          <div class="seat-heading">
+            <h2>Dealer</h2>
+            <span class="score" id="dealer-score">Score: 0</span>
+          </div>
+          <div class="hand" id="dealer-hand"></div>
+        </article>
+
+        <article class="seat">
+          <div class="seat-heading">
+            <h2>Player</h2>
+            <span class="score" id="player-score">Score: 0</span>
+          </div>
+          <div class="hand" id="player-hand"></div>
+
+          <section class="betting panel">
+            <div class="betting-header">
+              <h2>Betting Chips</h2>
+              <label class="shoe-picker" for="deck-count">
+                Decks
+                <select id="deck-count">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="4" selected>4</option>
+                  <option value="6">6</option>
+                  <option value="8">8</option>
+                </select>
+              </label>
+            </div>
+            <div class="chip-row" id="chip-row">
+              <button class="chip" type="button" data-chip="5">$5</button>
+              <button class="chip" type="button" data-chip="25">$25</button>
+              <button class="chip" type="button" data-chip="100">$100</button>
+            </div>
+            <div class="bet-actions">
+              <button id="clear-bet-button" type="button">Clear Bet</button>
+            </div>
+          </section>
+        </article>
+      </section>
+
+      <section class="controls">
+        <button id="deal-button" type="button">Deal</button>
+        <button id="hit-button" type="button" disabled>Hit</button>
+        <button id="stand-button" type="button" disabled>Stand</button>
+        <button id="double-button" type="button" disabled>Double</button>
+        <button id="split-button" type="button" disabled>Split</button>
+      </section>
+
+      <section class="recap panel">
+        <div class="trainer-header">
+          <h2>Hand Recap</h2>
+          <span class="mode-pill" id="recap-mode-label">Basic</span>
+        </div>
+        <div class="recap-body" id="hand-recap">
+          <p class="recap-empty">Play a hand to see how your decisions matched perfect strategy.</p>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-backdrop hidden" id="atm-modal">
+      <div class="modal">
+        <h2>Hit The ATM?</h2>
+        <div class="modal-actions">
+          <button id="atm-yes-button" type="button">Yes</button>
+          <button id="atm-no-button" type="button">No</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="celebration-layer" id="celebration-layer" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "Blackjack",
+  "short_name": "Blackjack",
+  "description": "A single-player blackjack table with betting, splits, doubles, and dealer soft-17 rules.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b5d3b",
+  "theme_color": "#0b5d3b",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
